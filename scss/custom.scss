@@ -1,11 +1,13 @@
 @import "../node_modules/bootstrap/scss/functions";
-
-$navbar-dark-color: #fff;
-
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
 
-@import "../node_modules/bootstrap/scss/navbar"
+$navbar-dark-color: $white;
+$navbar-dark-active-color: rgba($white, .55);
+
+@import "../node_modules/bootstrap/scss/navbar";
+
+
 
 
 
