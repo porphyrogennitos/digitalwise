@@ -1,4 +1,9 @@
-.navbar {
+html,
+body {
+  overflow-x: hidden;
+}
+
+navbar {
   position: relative;
   display: flex;
   flex-wrap: wrap;

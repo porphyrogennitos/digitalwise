@@ -1,6 +1,14 @@
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";
+// @import "../node_modules/bootstrap/scss/utilities";
+
+// $custom-spacers: (
+//     6: $spacer * 10,
+//     "6": $spacer * 10
+// );
+
+// $spacers: map-merge($spacers, $custom-spacers);
 
 $navbar-dark-color: $white;
 $navbar-dark-active-color: rgba($white, .55);
