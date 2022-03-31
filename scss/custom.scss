@@ -1,21 +1,66 @@
+// Import Gotham Greek font
+@font-face {
+    font-family: "Gotham Greek";
+    src: url(fonts/GothamGR.otf);
+}
+
+@font-face {
+    font-family: "Gotham Greek";
+    src: url(fonts/GothamGRBold.otf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Gotham Greek";
+    src: url(fonts/GothamGRLight.otf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Gotham Greek";
+    src: url(fonts/GothamGRMedium.otf);
+    font-weight: 500;
+}
+
+// Configuration
 @import "../node_modules/bootstrap/scss/functions";
+
+// Typography
+$font-family-sans-serif: "Gotham Greek", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+
 @import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/utilities";
 @import "../node_modules/bootstrap/scss/mixins";
-// @import "../node_modules/bootstrap/scss/utilities";
 
-// $custom-spacers: (
-//     6: $spacer * 10,
-//     "6": $spacer * 10
-// );
-
-// $spacers: map-merge($spacers, $custom-spacers);
-
+// Navbar
 $navbar-dark-color: $white;
-$navbar-dark-active-color: rgba($white, .55);
+$navbar-dark-active-color: rgba($white, 0.55);
+
+// Typography
+// Modify .fs-5 (https://getbootstrap.com/docs/5.0/utilities/api/#using-the-api)
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size": map-merge(
+      map-get($utilities, "font-size"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "font-size"), "values"),
+          (5: $font-size-base * 1.125),
+        ),
+      ),
+    ),
+  )
+);
+
 
 @import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
 
-
-
-
+@import "../node_modules/bootstrap/scss/bootstrap-utilities.scss";
 
