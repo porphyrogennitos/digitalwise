@@ -1,25 +1,25 @@
 // Import Gotham Greek font
 @font-face {
-    font-family: "Gotham Greek";
-    src: url(fonts/GothamGR.otf);
+  font-family: "Gotham Greek";
+  src: url(fonts/GothamGR.otf);
 }
 
 @font-face {
-    font-family: "Gotham Greek";
-    src: url(fonts/GothamGRBold.otf);
-    font-weight: bold;
+  font-family: "Gotham Greek";
+  src: url(fonts/GothamGRBold.otf);
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: "Gotham Greek";
-    src: url(fonts/GothamGRLight.otf);
-    font-weight: 300;
+  font-family: "Gotham Greek";
+  src: url(fonts/GothamGRLight.otf);
+  font-weight: 300;
 }
 
 @font-face {
-    font-family: "Gotham Greek";
-    src: url(fonts/GothamGRMedium.otf);
-    font-weight: 500;
+  font-family: "Gotham Greek";
+  src: url(fonts/GothamGRMedium.otf);
+  font-weight: 500;
 }
 
 // Configuration
@@ -27,8 +27,8 @@
 
 // Typography
 $font-family-sans-serif: "Gotham Greek", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+  "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+  "Noto Color Emoji";
 
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/utilities";
@@ -44,18 +44,21 @@ $navbar-dark-active-color: rgba($white, 0.55);
 $utilities: map-merge(
   $utilities,
   (
-    "font-size": map-merge(
-      map-get($utilities, "font-size"),
-      (
-        values: map-merge(
-          map-get(map-get($utilities, "font-size"), "values"),
-          (5: $font-size-base * 1.125),
-        ),
+    "font-size":
+      map-merge(
+        map-get($utilities, "font-size"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "font-size"), "values"),
+              (
+                5: $font-size-base * 1.125,
+              )
+            ),
+        )
       ),
-    ),
   )
 );
-
 
 @import "../node_modules/bootstrap/scss/navbar";
 @import "../node_modules/bootstrap/scss/root";
@@ -64,3 +67,12 @@ $utilities: map-merge(
 
 @import "../node_modules/bootstrap/scss/bootstrap-utilities.scss";
 
+.fullwidth {
+  background-image: linear-gradient(180deg, rgba(30, 51, 238, 0.6) 0%, rgba(34, 34, 34, 0.6) 100%),
+    url("../images/fullwidth-mobile.png");
+  background-blend-mode: multiply;
+  height: 50vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
