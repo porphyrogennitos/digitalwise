@@ -5935,4 +5935,8 @@ progress {
   background-size: cover;
 }
 
+.img-newsletter {
+  max-width: 57px;
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -119,11 +119,26 @@
     </main>
 
     <!-- Footer -->
-    <footer>
-        <img src="./images/icon-newsletter.png" alt="Newsletter icon">
-        <p class="text-capitalize">Subscribe To Our Newsletter</p>
-        <input type="email">
-        <button>Subscribe</button>
+    <footer class="container bg-dark pt-4 pb-3">
+        <div class="row flex-column text-center">
+            <div class="col">
+                <img src="./images/icon-newsletter.png" class="img-fluid img-newsletter" alt="Newsletter icon">
+                <p class="text-white text-capitalize fs-4">Subscribe To Our Newsletter</p>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="col">
+            <form action="" class="row flex-column gap-1">
+                <div class="col">
+                    <input type="email" class="form-control" placeholder="Your Email">
+                </div>
+                <div class="col d-grid">
+                    <button type="submit" class="btn btn-danger">Subscribe</button>
+                </div>
+            </form>
+        </div>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->

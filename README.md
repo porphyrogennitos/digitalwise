@@ -1,2 +1,2 @@
 # digitalwise
-A practice assignment
+A landing page for DigitalWise
