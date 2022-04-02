@@ -80,3 +80,14 @@ $utilities: map-merge(
 .img-newsletter {
   max-width: 57px;
 }
+
+@media (min-width: 768px) {
+  .rtl {
+    direction: rtl;
+
+    li a {
+      direction: ltr;
+      unicode-bidi: embed;
+    }
+  }
+}
