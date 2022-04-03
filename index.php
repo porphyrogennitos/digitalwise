@@ -1,3 +1,46 @@
+<?php
+$error = '';
+$email = '';
+
+function clean_text($string)
+{
+    $string = trim($string);
+    $string = stripslashes($string);
+    $string = htmlspecialchars($string);
+    return $string;
+}
+
+if (isset($_POST["email"])) {
+    if (empty($_POST["email"])) {
+        $error = '<p class="text-danger">Please enter your email</p>';
+    } else {
+        $email = clean_text($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error .= '<p class="text-danger">Invalid email format</p>';
+        }
+    }
+
+    if ($error == '') {
+        $file_open = fopen("contact_data.csv", "a");
+        $no_rows = count(file("contact_data.csv"));
+        if ($no_rows > 1) {
+            $no_rows = ($no_rows - 1) + 1;
+        }
+        $form_data = array(
+            'sr_no' => $no_rows,
+            'email' => $email
+        );
+        fputcsv($file_open, $form_data);
+        $error = '<p class="text-success">You have been registered!</p>';
+        $email = '';
+    }
+}
+// if(isset($_POST["submit"]))
+// {
+
+// }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +51,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="styles.css">
     <title>DigitalWise</title>
@@ -128,11 +170,11 @@
     <footer class="bg-dark pt-4 py-4">
         <div class="container">
             <div class="row flex-column flex-md-row text-center align-items-center">
+            <?php echo $error; ?>
                 <div class="col-12 col-lg-6">
                     <div class="row align-items-lg-center justify-content-xl-end">
                         <div class="col-12 col-lg-2 pe-lg-0">
-                            <img src="./images/icon-newsletter.png" class="img-fluid img-newsletter"
-                                alt="Newsletter icon">
+                            <img src="./images/icon-newsletter.png" class="img-fluid img-newsletter" alt="Newsletter icon">
                         </div>
                         <div class="col col-xl-8 ps-lg-0 text-center">
                             <p class="text-white text-capitalize fs-4 mb-lg-0 fw-bold">Subscribe To Our Newsletter</p>
@@ -142,9 +184,9 @@
 
                 <!-- Form -->
                 <div class="col">
-                    <form action="" method="post" class="row flex-column flex-md-row gap-1 gap-lg-0">
+                    <form method="post" class="row flex-column flex-md-row gap-1 gap-lg-0">
                         <div class="col-12 col-lg-10 pe-lg-0">
-                            <input type="email" name="email" class="form-control" placeholder="Your Email">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>">
                         </div>
                         <div class="col-12 col-lg-1 d-grid ps-lg-0">
                             <button type="submit" class="btn btn-danger">Subscribe</button>
@@ -156,9 +198,7 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
